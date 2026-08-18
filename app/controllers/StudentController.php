@@ -70,9 +70,9 @@ class StudentController extends Controller {
 
 			// Right panel content
 			'socials' => [
-				['label' => 'Facebook',  'url' => 'https://facebook.com/yourusername'],
+				['label' => 'Facebook',  'url' => 'https://facebook.com/benedick.almarez.2024'],
 				['label' => 'GitHub',    'url' => 'https://github.com/Benskiee'],
-				['label' => 'Instagram', 'url' => 'https://instagram.com/yourusername'],
+				['label' => 'Instagram', 'url' => 'https://instagram.com/bene3qtt/'],
 			],
 		];
 
