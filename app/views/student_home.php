@@ -12,10 +12,11 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 <body>
     <div class="card">
         <h1>Student Information Page</h1>
-        <p class="lead">Welcome! This is the student home page. You now have access to the protected Student Profile page.</p>
+        <p class="lead">Welcome! This is my home page.
+        </p>
         <nav>
-            <a href="<?= site_url('student'); ?>">Home</a>
-            <a href="<?= site_url('student/profile'); ?>" class="secondary">Student Profile</a>
+            <a href="<?= site_url('/'); ?>">Home</a>
+            <a href="<?= site_url('student/profile'); ?>" class="secondary">My Profile</a>
         </nav>
     </div>
 </body>
