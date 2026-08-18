@@ -1,0 +1,115 @@
+/* ==========================================================
+   Student Information Pages — shared styles
+   Used by: student_home.php, student_confirm.php, student_profile.php
+   ========================================================== */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f4f6f8;
+    color: #1f2937;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    padding: 2.5rem 3rem;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+    color: #111827;
+}
+
+p.lead {
+    color: #6b7280;
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
+}
+
+/* Info rows (profile page) */
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.95rem;
+    text-align: left;
+}
+.info-row:last-of-type { border-bottom: none; }
+.info-row .label { color: #6b7280; font-weight: 600; }
+.info-row .value { color: #111827; text-align: right; }
+
+/* Navigation buttons */
+nav {
+    margin-top: 1.75rem;
+    text-align: center;
+}
+nav a {
+    display: inline-block;
+    margin: 0 0.4rem;
+    padding: 0.6rem 1.3rem;
+    background: #2563eb;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+nav a:hover { background: #1d4ed8; }
+nav a.secondary { background: #e5e7eb; color: #111827; }
+nav a.secondary:hover { background: #d1d5db; }
+
+/* Confirm form (student_confirm.php) */
+input[type="text"] {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+button {
+    width: 100%;
+    padding: 0.7rem;
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+button:hover { background: #1d4ed8; }
+
+.error {
+    background: #fee2e2;
+    color: #b91c1c;
+    padding: 0.6rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.profile-img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto 1.25rem;
+    display: block;
+    border: 3px solid #e5e7eb;
+}
