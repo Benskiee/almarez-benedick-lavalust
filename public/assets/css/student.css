@@ -644,10 +644,17 @@ button:hover { background: var(--minsu-green-dark); }
     font-weight: 600;
     color: var(--minsu-green);
     text-decoration: none;
-    padding-bottom: 2px;
+    background: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0 0 2px;
     border-bottom: 1px solid var(--minsu-green);
     transition: color 0.2s, border-color 0.2s;
 }
+/* .resume-home-link is a <nav><a> — explicitly clear the background/padding/
+   radius that the generic "nav a" button rule sets earlier in this file,
+   otherwise the link renders as a solid green box with invisible green-on-
+   green text. */
 
 .resume-home-link:hover {
     color: var(--resume-gold);
@@ -684,5 +691,193 @@ button:hover { background: var(--minsu-green-dark); }
     }
     .resume-record-value {
         text-align: left;
+    }
+}
+
+/* ==========================================================
+   GATE PAGES — home.php / confirm.php
+   Same paper + green + gold system as the resume, scaled down
+   to a single centered card so Home -> Confirm ID -> Profile
+   reads as one continuous document.
+   ========================================================== */
+
+.resume-gate {
+    background: var(--resume-paper);
+    border-top: 6px solid var(--minsu-green);
+    border-radius: 4px;
+    box-shadow: 0 18px 45px rgba(0,0,0,0.28);
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
+    padding: 2.75rem 2.5rem;
+    text-align: center;
+}
+
+.resume-gate-seal {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--minsu-green);
+    border: 3px solid var(--resume-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+}
+
+.resume-gate-seal svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--resume-gold);
+}
+
+.resume-gate-kicker {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--resume-ink-muted);
+    margin-bottom: 0.35rem;
+}
+
+.resume-gate-org {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-size: 0.85rem;
+    color: var(--resume-ink-muted);
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--resume-paper-line);
+}
+
+.resume-gate-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.9rem;
+    line-height: 1.15;
+    color: var(--resume-ink);
+    margin-bottom: 0.65rem;
+}
+
+.resume-gate-lead {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-size: 0.95rem;
+    color: var(--resume-ink-muted);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.resume-gate-divider {
+    border: none;
+    border-top: 2px solid var(--resume-gold);
+    width: 56px;
+    margin: 0 auto 1.75rem;
+}
+
+/* Buttons */
+
+.resume-gate-nav {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.resume-gate-btn {
+    display: inline-block;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 999px;
+    border: 2px solid var(--minsu-green);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.resume-gate-btn--primary {
+    background: var(--minsu-green);
+    color: #fff;
+}
+.resume-gate-btn--primary:hover {
+    background: var(--minsu-green-dark);
+    border-color: var(--minsu-green-dark);
+}
+
+.resume-gate-btn--outline {
+    background: transparent;
+    color: var(--minsu-green);
+}
+.resume-gate-btn--outline:hover {
+    background: var(--resume-gold-soft);
+    border-color: var(--resume-gold);
+    color: var(--resume-ink);
+}
+
+.resume-gate-btn--block {
+    display: block;
+    width: 100%;
+    text-align: center;
+    border: none;
+}
+
+/* Confirm-ID form */
+
+.resume-gate-field {
+    text-align: left;
+    margin-bottom: 1.9rem;
+}
+
+.resume-gate-label {
+    display: block;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--resume-ink-muted);
+    margin-bottom: 0.5rem;
+}
+
+.resume-gate-input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid var(--resume-paper-line);
+    background: transparent;
+    padding: 0.6rem 0.1rem;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 1rem;
+    letter-spacing: 0.03em;
+    color: var(--resume-ink);
+    transition: border-color 0.2s;
+}
+.resume-gate-input:focus {
+    outline: none;
+    border-bottom-color: var(--minsu-green);
+}
+.resume-gate-input::placeholder {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    color: #b8b2a1;
+}
+
+.resume-gate-error {
+    background: #fbeeee;
+    border-left: 3px solid #b91c1c;
+    color: #8f1d1d;
+    padding: 0.65rem 0.85rem;
+    border-radius: 4px;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    font-size: 0.85rem;
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 520px) {
+    .resume-gate {
+        padding: 2.25rem 1.5rem;
+    }
+    .resume-gate-title {
+        font-size: 1.6rem;
     }
 }

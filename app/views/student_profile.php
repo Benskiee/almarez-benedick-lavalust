@@ -48,35 +48,16 @@ function social_icon($label)
         'svg' => '<path d="M3.9 12a4.1 4.1 0 0 1 4.1-4.1h4v1.7h-4a2.4 2.4 0 1 0 0 4.8h4V16h-4A4.1 4.1 0 0 1 3.9 12zm6-1h4.2v2H9.9v-2zM16 7.9h4a4.1 4.1 0 1 1 0 8.2h-4v-1.7h4a2.4 2.4 0 1 0 0-4.8h-4V7.9z"/>',
     ];
 }
-
-/**
- * Split "First Last" so the surname can be set on its own weight/line
- * in the resume masthead. Falls back gracefully for single-word names.
- */
-function resume_name_parts($full)
-{
-    $parts = preg_split('/\s+/', trim($full));
-    if (count($parts) < 2) {
-        return ['given' => $full, 'family' => ''];
-    }
-    $family = array_pop($parts);
-    return ['given' => implode(' ', $parts), 'family' => $family];
-}
-
-$name_parts = resume_name_parts($name);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $name ? $name . ' · ' : ''; ?>Student Record · Mindoro State University</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <title>Student Profile · Mindoro State University</title>
     <link rel="stylesheet" href="<?= base_url('assets/css/student.css'); ?>">
 </head>
-<body class="resume-body">
+<body>
 
 <header class="site-header">
     <img src="https://minsu.edu.ph/template/images/logo.png" alt="MinSU Logo">
@@ -87,109 +68,81 @@ $name_parts = resume_name_parts($name);
 </header>
 
 <main class="page-body">
-<div class="resume-shell">
+<div class="profile-card">
+    <div class="profile-col profile-col--side">
+        <h2>Hobbies</h2>
+        <ul class="tag-list">
+            <?php foreach ($hobbies as $hobby): ?>
+                <li><?= $hobby; ?></li>
+            <?php endforeach; ?>
+        </ul>
 
-    <aside class="resume-sidebar">
-        <div class="resume-photo-wrap">
-            <img src="<?= base_url('assets/css/images/' . $photo); ?>" alt="Profile Photo" class="resume-photo">
-            <span class="resume-seal" title="MinSU Verified Student">
+        <h2>Skills</h2>
+        <ul class="tag-list">
+            <?php foreach ($skills as $skill): ?>
+                <li><?= $skill; ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+
+    <div class="profile-col profile-col--main">
+        <div class="profile-photo-wrap">
+            <img src="<?= base_url('assets/css/images/' . $photo); ?>" alt="Profile Photo" class="profile-img">
+            <span class="verified-badge" title="MinSU Verified Student">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M9 16.2l-3.5-3.5-1.4 1.4L9 19 20 8l-1.4-1.4z"/>
                 </svg>
             </span>
         </div>
 
-        <div class="resume-section">
-            <h2 class="resume-eyebrow">Contact</h2>
-            <p class="resume-contact-line"><?= $email; ?></p>
+        <h1>My Information</h1>
+
+        <div class="info-row">
+            <span class="label">Student ID</span>
+            <span class="value"><?= $student_id; ?></span>
+        </div>
+        <div class="info-row">
+            <span class="label">Name</span>
+            <span class="value"><?= $name; ?></span>
+        </div>
+        <div class="info-row">
+            <span class="label">Course</span>
+            <span class="value"><?= $course; ?></span>
+        </div>
+        <div class="info-row">
+            <span class="label">Year Level</span>
+            <span class="value"><?= $year; ?></span>
+        </div>
+        <div class="info-row">
+            <span class="label">Section</span>
+            <span class="value"><?= $section; ?></span>
+        </div>
+        <div class="info-row">
+            <span class="label">Email</span>
+            <span class="value"><?= $email; ?></span>
         </div>
 
-        <?php if (!empty($skills)): ?>
-        <div class="resume-section">
-            <h2 class="resume-eyebrow">Skills</h2>
-            <ul class="resume-tag-stack">
-                <?php foreach ($skills as $skill): ?>
-                    <li><?= $skill; ?></li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-        <?php endif; ?>
-
-        <?php if (!empty($hobbies)): ?>
-        <div class="resume-section">
-            <h2 class="resume-eyebrow">Hobbies</h2>
-            <ul class="resume-tag-stack resume-tag-stack--muted">
-                <?php foreach ($hobbies as $hobby): ?>
-                    <li><?= $hobby; ?></li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-        <?php endif; ?>
-
-        <?php if (!empty($socials)): ?>
-        <div class="resume-section">
-            <h2 class="resume-eyebrow">Connect</h2>
-            <ul class="resume-social-row">
-                <?php foreach ($socials as $social):
-                    $icon = social_icon($social['label']);
-                ?>
-                    <li>
-                        <a href="<?= $social['url']; ?>" target="_blank" rel="noopener" class="<?= $icon['class']; ?>" title="<?= $social['label']; ?>">
-                            <svg class="resume-social-icon" viewBox="0 0 24 24" aria-hidden="true"><?= $icon['svg']; ?></svg>
-                            <span class="sr-only"><?= $social['label']; ?></span>
-                        </a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-        <?php endif; ?>
-    </aside>
-
-    <section class="resume-main">
-        <div class="resume-masthead">
-            <span class="resume-masthead-label">Mindoro State University &middot; Official Student Record</span>
-            <h1 class="resume-name">
-                <?= $name_parts['given']; ?><?php if ($name_parts['family']): ?> <span class="resume-name-family"><?= $name_parts['family']; ?></span><?php endif; ?>
-            </h1>
-            <p class="resume-subtitle">
-                <?php
-                    $subtitle_parts = array_filter([$course, $year ? $year . ' Year' : '', $section ? 'Section ' . $section : '']);
-                    echo implode(' &nbsp;&middot;&nbsp; ', $subtitle_parts);
-                ?>
-            </p>
-        </div>
-
-        <hr class="resume-divider">
-
-        <div class="resume-record">
-            <h2 class="resume-eyebrow resume-eyebrow--record">Academic Record</h2>
-
-            <div class="resume-record-row">
-                <span class="resume-record-label">Student ID</span>
-                <span class="resume-record-value resume-id"><?= $student_id; ?></span>
-            </div>
-            <div class="resume-record-row">
-                <span class="resume-record-label">Course</span>
-                <span class="resume-record-value"><?= $course; ?></span>
-            </div>
-            <div class="resume-record-row">
-                <span class="resume-record-label">Year Level</span>
-                <span class="resume-record-value"><?= $year; ?></span>
-            </div>
-            <div class="resume-record-row">
-                <span class="resume-record-label">Section</span>
-                <span class="resume-record-value"><?= $section; ?></span>
-            </div>
-            <div class="resume-record-row">
-                <span class="resume-record-label">Email</span>
-                <span class="resume-record-value"><?= $email; ?></span>
-            </div>
-        </div>
-
-        <nav class="resume-footer">
-            <a href="<?= site_url('/'); ?>" class="resume-home-link">&larr; Back to Home</a>
+        <nav>
+            <a href="<?= site_url('/'); ?>">Home</a>
         </nav>
-    </section>
+    </div>
+
+    
+    <div class="profile-col profile-col--side">
+        <h2>Social Media</h2>
+        <ul class="social-list">
+            <?php foreach ($socials as $social):
+                $icon = social_icon($social['label']);
+            ?>
+                <li>
+                    <a href="<?= $social['url']; ?>" target="_blank" rel="noopener" class="<?= $icon['class']; ?>" title="<?= $social['label']; ?>">
+                        <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true"><?= $icon['svg']; ?></svg>
+                        <span class="sr-only"><?= $social['label']; ?></span>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
 
 </div>
 </main>
