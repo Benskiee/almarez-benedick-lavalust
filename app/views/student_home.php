@@ -36,7 +36,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             <p class="resume-hero-kicker">Student Information Portal</p>
             <p class="resume-hero-org">Mindoro State University &middot; Calapan City Campus</p>
 
-            <h1 class="resume-hero-title">Your record,<br><em>on file.</em></h1>
+            <h1 class="resume-hero-title">My record,<br><em>on file.</em></h1>
 
             <p class="resume-hero-lead">
                Search for your name and pull up everything on record 
