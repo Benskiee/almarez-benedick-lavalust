@@ -2,7 +2,7 @@
 defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 class StudentController extends Controller {
-	private $valid_student_id = 'MCC2024-00023';
+	private $valid_student_id = 'MCC2024-00023'; 
 
 	public function index()
 	{
@@ -57,7 +57,7 @@ class StudentController extends Controller {
 
 		$student = [
 			'student_id' => 'MCC2024-00023',
-			'name'       => 'Benedick Almarez',
+			'name'       => 'Benedick M. Almarez',
 			'course'     => 'BS Information Technology',
 			'year'       => '3rd Year',
 			'section'    => '3-F1',
@@ -66,11 +66,11 @@ class StudentController extends Controller {
 
 			// Left panel content
 			'hobbies' => ['Gaming', 'Riding motorcycle', 'Pumasok araw araw'],
-			'skills'  => ['Networking / Packet Tracer'],
+			'skills'  => ['Networking/Packet tracer'],
 
 			// Right panel content
 			'socials' => [
-				['label' => 'Facebook',  'url' => 'https://facebook.com/benedick.almarez.2024'],
+				['label' => 'Facebook',  'url' => 'https://facebook.com/benedick.almarez.2024/'],
 				['label' => 'GitHub',    'url' => 'https://github.com/Benskiee'],
 				['label' => 'Instagram', 'url' => 'https://instagram.com/bene3qtt/'],
 			],
