@@ -354,4 +354,5 @@ require_once APP_DIR . 'middlewares/StudentMiddlewareMiddleware.php';
 $config['middlewares'] = [
 	'student_access' => new StudentMiddlewareMiddleware(),
 ];
+
 ?>
